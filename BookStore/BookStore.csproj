@@ -28,8 +28,8 @@
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Data\" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Repository\" />
     <Folder Include="Data\" />
   </ItemGroup>
 </Project>
