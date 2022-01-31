@@ -57,14 +57,26 @@ namespace BookStore.Repository
 
         public async Task UpdateBookAsync(int bookId, BookModel bookModel)
         {
-            var book = await _context.Books.FindAsync(bookId);
-            if(book != null)
-            {
-                book.Title = bookModel.Title;
-                book.Description = bookModel.Description;
+            //var book = await _context.Books.FindAsync(bookId);        // DB hit 1
+            //if(book != null)
+            //{
+            //    book.Title = bookModel.Title;
+            //    book.Description = bookModel.Description;
 
-                await _context.SaveChangesAsync();
-            }
+            //    await _context.SaveChangesAsync();        // DB hit 2
+            //}
+
+
+            // Reduce number of hits to DB.
+            var book = new Books()
+            {
+                Id = bookId,
+                Title = bookModel.Title,
+                Description = bookModel.Description
+            };
+
+            _context.Books.Update(book);
+            await _context.SaveChangesAsync();      // DB hit 1 (optimized)
         }
     }
 }
