@@ -26,7 +26,7 @@ namespace BookStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BookStoreContext>(options => options.UseNpgsql(Configuration.GetConnectionString("BookStoreDB")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore", Version = "v1" });
