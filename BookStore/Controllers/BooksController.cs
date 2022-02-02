@@ -34,7 +34,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> GetBookById([FromBody]BookModel bookModel)
+        public async Task<IActionResult> AddBook([FromBody]BookModel bookModel)
         {
             var id = await _bookRepository.AddBookAsync(bookModel);
             return CreatedAtAction(nameof(GetBookById), new { id = id, controller = "books" }, id);
