@@ -103,7 +103,7 @@ namespace BookStore.Repository
 
         public async Task DeleteBookAsync(int bookId)
         {
-            //// if checking parameter is other than primary key, in this case, it is Title.
+            //// if condition parameter is other than primary key, in this case, it is Title.
             //var book = _context.Books.Where(x => x.Title == "").FirstOrDefault();
             //_context.Books.Remove(book);
             //await _context.SaveChangesAsync();
